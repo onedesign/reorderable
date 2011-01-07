@@ -1,0 +1,85 @@
+# Reorderable
+
+The Reorderable gem is a little bit of code to easily allow reordering of model items when using ActiveRecord with MySQL and jQuery.
+
+## Installation
+
+Add the following to your Gemfile:
+
+    gem 'reorderable', "~> 0.1"
+
+then run
+
+    bundle install
+
+## Usage
+
+### Models
+Add the 'reoderable' declaration to any model you want to be reorderable, e.g.
+
+    # app/models/page.rb
+    class Page < ActiveRecord::Base
+      reorderable
+    end
+
+This gem depends on the [sortable](https://github.com/shuber/sortable) gem; the options you can pass to 'reorderable' are the same that you can pass to 'sortable'. The 'reorderable' delcaration further sets up a default scope for your model, so that items are properly ordered by default.
+
+### Routes
+
+Add a 'reorder' entry to your routes
+
+    # config/routes.rb
+    namespace :admin do
+      resources :pages do
+        post :reorder, :on => :collection
+      end
+    end
+
+It's possible to dynamically add a route (see: http://openhood.com/rails/rails%203/2010/07/20/add-routes-at-runtime-rails-3/ for one such solution) or to have a reorderings_controller in this gem, but it wasn't clear whether either of those options were really worth it.
+
+### Controller
+
+Add the following to any controller you want to have reordering facilities:
+
+    # app/controllers/admin/pages_controller.rb
+    class Admin::PagesController < Admin::BaseController
+      include Reorderable::ActionController
+    end
+
+### View
+
+You probably want something like this:
+
+    # app/views/admin/pages/index.html.erb
+    <table>
+      <thead>
+        <tr>
+          <th>&nbsp;</th>
+          <th>Name</th>
+        </tr>
+      </thead>
+      <tbody<%= reorderable_attributes(@pages, 'position')%>>
+        <% @pages.each do |page| %>
+          <tr id='<%= dom_id(page) %>'>
+            <td class='move'>&#8597;</td>
+            <td><%= page.name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+The key bit is the "reorderable_attributes" helper method, which adds the proper HTML attributes to the <tbody> element such that the jQuery code can do an Ajax request to the server to reorder the items in the table.
+
+### Layout
+
+Add the following to your layout file:
+
+    # app/views/layouts/application.html.erb
+    <%= javascript_include_tag 'jquery-ui-1.8.6.custom.min.js' %>
+    <%= javascript_include_tag 'reorderable' %>
+
+Note that you must already have jQuery included for this to work!
+
+## Copyright
+
+Copyright (c) 2011 [Jon Buda](mailto:jonbuda[at]gmail[dot]com) and [Dan Hodos](mailto:danhodos[at]gmail[dot]com). Sponsored by [One Design Company](http://onedesigncompany.com/). Released under the MIT License.

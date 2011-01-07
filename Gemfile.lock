@@ -1,0 +1,27 @@
+GIT
+  remote: https://github.com/shuber/sortable.git
+  revision: f1d01727218816d3e1f569c3d6f4d6bf6a14bb86
+  specs:
+    sortable (1.0.6)
+
+GEM
+  remote: http://rubygems.org/
+  specs:
+    git (1.2.5)
+    jeweler (1.5.2)
+      bundler (~> 1.0.0)
+      git (>= 1.2.5)
+      rake
+    rake (0.8.7)
+    rcov (0.9.9)
+    shoulda (2.11.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler (~> 1.0.0)
+  jeweler (~> 1.5.2)
+  rcov
+  shoulda
+  sortable!
