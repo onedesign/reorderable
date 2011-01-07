@@ -1,6 +1,6 @@
 # Reorderable
 
-The Reorderable gem is a little bit of code to easily allow reordering of model items when using ActiveRecord with MySQL and jQuery.
+Allows drag-n-drop reordering of ActiveRecord model items when using MySQL and jQuery.
 
 ## Installation
 
