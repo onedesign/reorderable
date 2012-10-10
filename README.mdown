@@ -1,6 +1,6 @@
 # Reorderable
 
-Allows drag-n-drop reordering of ActiveRecord model items when using MySQL and jQuery.
+Allows drag-n-drop reordering of ActiveRecord model items when using MySQL or PostgreSQL and jQuery.
 
 ## Installation
 
@@ -11,6 +11,11 @@ Add the following to your Gemfile:
 then run
 
     bundle install
+
+Add a file called `reorderable.rb` to your `config/initializers` directory with one of the following lines (depending on your database adapter):
+
+    require 'reorderable/active_record/mysql'
+    require 'reorderable/active_record/postgresql'
 
 ## Usage
 

@@ -8,9 +8,9 @@ Gem::Specification.new do |s|
   s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
-  s.authors = ["Dan Hodos", "Jon Buda"]
+  s.authors = ["Dan Hodos", "Jon Buda", "AJ Schuster"]
   s.date = %q{2011-01-07}
-  s.description = %q{Allows drag-n-drop reordering of ActiveRecord model items when using MySQL and jQuery}
+  s.description = %q{Allows drag-n-drop reordering of ActiveRecord model items when using MySQL or PostgreSQL and jQuery}
   s.email = %q{danhodos@gmail.com}
   s.extra_rdoc_files = [
     "README.mdown"
@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
   s.licenses = ["MIT"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.7}
-  s.summary = %q{Allows for drag-n-drop reordering of ActiveRecord models when using MySQL}
+  s.summary = %q{Allows for drag-n-drop reordering of ActiveRecord models when using MySQL or PostgreSQL}
   s.test_files = [
     "test/helper.rb",
     "test/test_reorderable.rb"
