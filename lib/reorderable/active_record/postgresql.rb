@@ -4,12 +4,6 @@ module Reorderable
       extend ActiveSupport::Concern
 
       module ClassMethods
-        def reorderable(opts={})
-          sortable(opts)
-          column = sortable_lists[opts[:column].to_s][:column]
-          default_scope(order("#{column} asc")) if opts[:list_name].blank?
-        end
-
         # This will only work on a relatively small data set since we're doing
         # this reordering in Ruby-land.
         def reorder!(ids = [], options = {})

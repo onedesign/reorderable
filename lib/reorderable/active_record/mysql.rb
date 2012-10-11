@@ -4,12 +4,6 @@ module Reorderable
       extend ActiveSupport::Concern
 
       module ClassMethods
-        def reorderable(opts={})
-          sortable(opts)
-          column = sortable_lists[opts[:column].to_s][:column]
-          default_scope(order("#{column} asc")) if opts[:list_name].blank?
-        end
-
         # This only works in MySQL because of FIND_BY_SET.
         # Reorder entries based on the order of the IDs passed in
         def reorder!(ids = [], options = {})
